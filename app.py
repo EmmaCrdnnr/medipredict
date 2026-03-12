@@ -33,51 +33,62 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-#CSS pour le style de la page (adaptatif light/dark)
+#CSS pour le style de la page
 st.markdown("""
 <style>
+html, body, [class*="css"] {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+.stApp { background-color: #0f172a; }
+h1, h2, h3 { color: #f1f5f9; }
 .metric-card {
-    background: var(--secondary-background-color);
-    border: 1px solid rgba(128,128,128,0.2);
+    background: #1e293b;
+    border: 1px solid #334155;
     border-radius: 12px;
     padding: 1.2rem 1.5rem;
     margin-bottom: 1rem;
 }
 .legal-banner {
+    background: linear-gradient(135deg, #1e3a5f, #1e293b);
     border: 1px solid #3b82f6;
     border-left: 4px solid #3b82f6;
     border-radius: 8px;
     padding: 1rem 1.5rem;
     margin: 1rem 0;
     font-size: 0.9rem;
+    color: #bfdbfe;
 }
 .consent-box {
-    background: var(--secondary-background-color);
-    border: 1px solid rgba(128,128,128,0.2);
+    background: #1e293b;
+    border: 1px solid #334155;
     border-radius: 12px;
     padding: 1.5rem;
     margin: 1.5rem 0;
 }
-.risk-low  { color: #16a34a; font-weight: 700; }
-.risk-mod  { color: #d97706; font-weight: 700; }
-.risk-high { color: #dc2626; font-weight: 700; }
+.risk-low  { color: #22c55e; font-weight: 700; }
+.risk-mod  { color: #f59e0b; font-weight: 700; }
+.risk-high { color: #ef4444; font-weight: 700; }
 .rec-card {
-    background: var(--secondary-background-color);
+    background: #1e293b;
     border-left: 4px solid #3b82f6;
     border-radius: 6px;
     padding: 0.8rem 1rem;
     margin: 0.5rem 0;
     font-size: 0.88rem;
+    color: #cbd5e1;
 }
 .sidebar-label {
     font-size: 0.75rem;
+    color: #64748b;
     letter-spacing: 0.05em;
-    opacity: 0.5;
 }
 div[data-testid="stMetricValue"] { color: #3b82f6; }
+div[data-testid="stSidebar"] { background-color: #0f172a; border-right: 1px solid #1e293b; }
 .stButton>button {
     background: linear-gradient(135deg, #1d4ed8, #2563eb);
-    color: #fff !important;
+    color: #fff;
     border: none;
     border-radius: 8px;
     padding: 0.6rem 2rem;
@@ -86,6 +97,7 @@ div[data-testid="stMetricValue"] { color: #3b82f6; }
     transition: all 0.2s;
 }
 .stButton>button:hover { background: linear-gradient(135deg, #2563eb, #3b82f6); transform: translateY(-1px); }
+div[data-testid="stNumberInput"] input { background: #1e293b; color: #f1f5f9; border-color: #334155; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -142,12 +154,7 @@ if "last_result" not in st.session_state:
     st.session_state.last_result = None
 
 #Détection du thème
-try:
-    _base = st.get_option("theme.base")
-    THEME = "dark" if _base == "dark" else "light"
-except Exception:
-    THEME = "light"
-
+THEME = "dark"
 
 
 #Barre de navigation
@@ -455,7 +462,7 @@ elif page == "Comprendre ma prédiction":
     # Graphique SHAP
     st.markdown("###Impact de chaque variable (SHAP)")
     st.markdown('<p style="color:#64748b; font-size:0.85rem;">Rouge = augmente le risque &nbsp;|&nbsp;Vert = diminue le risque</p>', unsafe_allow_html=True)
-    fig_shap = plot_shap_bar(shap_vals[0], theme=THEME)
+    fig_shap = plot_shap_bar_themed(shap_vals[0], theme=THEME)
     st.pyplot(fig_shap, use_container_width=True)
 
     st.markdown("---")

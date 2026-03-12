@@ -1,6 +1,5 @@
 """
 MediPredict — Application Streamlit de prédiction du risque de diabète.
-Projet Jour 3 — Interface web complète.
 """
 
 import os

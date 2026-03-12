@@ -1,0 +1,41 @@
+# Environnements virtuels
+venv/
+.venv/
+env/
+
+# Secrets et variables d'environnement
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Données personnelles réelles (ne jamais committer)
+data/real_*.csv
+data/personal_*.csv
+
+# Modèles volumineux (optionnel — à commenter si vous souhaitez versionner le modèle)
+# model/*.pkl
+
+# Système
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDE
+.vscode/
+.idea/

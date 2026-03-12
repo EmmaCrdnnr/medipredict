@@ -415,7 +415,7 @@ elif page == "Mon profil de risque":
             <p style="color:#f1f5f9; font-size:1rem;">
             Ce résultat est une <strong>estimation statistique</strong>, non un diagnostic médical.
             La probabilité estimée reflète la similitude de votre profil avec les cas du dataset
-            d'entraînement (population amérindienne Pima). Consultez un médecin pour un bilan personnalisé.
+            d'entraînement (population non représentative). Consultez un médecin pour un bilan.
             </p>
             </div>
             """, unsafe_allow_html=True)

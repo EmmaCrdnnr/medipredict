@@ -18,7 +18,7 @@ from src.predict import (
 )
 from src.explain import (
     get_shap_explainer, compute_shap_values,
-    generate_natural_explanation, generate_recommendations, plot_shap_bar
+    generate_natural_explanation, generate_recommendations
 )
 from src.visualize import (
     plot_risk_gauge, plot_feature_distributions, plot_correlation_heatmap,

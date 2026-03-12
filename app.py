@@ -81,7 +81,7 @@ h1, h2, h3 { color: #f1f5f9; }
 }
 .sidebar-label {
     font-size: 0.75rem;
-    color: #64748b;
+    color: #f1f5f9;
     letter-spacing: 0.05em;
 }
 div[data-testid="stMetricValue"] { color: #3b82f6; }
@@ -169,10 +169,10 @@ with st.sidebar:
     st.markdown("---")
     st.markdown('<p class="sidebar-label">INFORMATIONS</p>', unsafe_allow_html=True)
     st.markdown("""
-    <div style="font-size:0.78rem; color:#64748b; line-height:1.6;">
-    Modèle : <b style="color:#94a3b8">Régression Logistique</b><br>
-    Dataset : <b style="color:#94a3b8">Pima Indians (768 obs.)</b><br>
-    Version : <b style="color:#94a3b8">1.0.0</b>
+    <div style="font-size:0.78rem; color:#f1f5f9; line-height:1.6;">
+    Modèle : <b style="color:#f1f5f9">Régression Logistique</b><br>
+    Dataset : <b style="color:#f1f5f9">Pima Indians (768 obs.)</b><br>
+    Version : <b style="color:#f1f5f9">1.0.0</b>
     </div>
     """, unsafe_allow_html=True)
 
@@ -200,7 +200,7 @@ if page == "Accueil":
         st.markdown("""
         <div class="metric-card">
         <h4>Objectif</h4>
-        <p style="color:#94a3b8; font-size:0.9rem;">
+        <p style="color:#f1f5f9; font-size:0.9rem;">
         Évaluer votre profil de risque de diabète de type 2 à partir
         d'indicateurs de santé anonymes et recevoir des explications claires.
         </p>
@@ -210,7 +210,7 @@ if page == "Accueil":
         st.markdown("""
         <div class="metric-card">
         <h4>Vos données</h4>
-        <p style="color:#94a3b8; font-size:0.9rem;">
+        <p style="color:#f1f5f9; font-size:0.9rem;">
         Aucune donnée personnelle n'est stockée ni transmise. Tout le
         traitement s'effectue en mémoire, localement sur le serveur.
         </p>
@@ -220,16 +220,16 @@ if page == "Accueil":
         st.markdown("""
         <div class="metric-card">
         <h4>Notre modèle</h4>
-        <p style="color:#94a3b8; font-size:0.9rem;">
+        <p style="color:#f1f5f9; font-size:0.9rem;">
         Régression Logistique entraînée sur le dataset Pima Indians.
         Choisi pour son interprétabilité et sa conformité éthique.
         </p>
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("###Politique de confidentialité")
+    st.markdown("### Politique de confidentialité")
     st.markdown("""
-    <div style="background:#1e293b; border-radius:8px; padding:1rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:1.8;">
+    <div style="background:#1e293b; border-radius:8px; padding:1rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:1.8;">
     • Les données saisies dans ce formulaire sont utilisées <strong>uniquement</strong> pour calculer votre estimation de risque.<br>
     • Ces données ne sont <strong>ni enregistrées, ni transmises à des tiers, ni utilisées à des fins commerciales</strong>.<br>
     • Le traitement est intégralement réalisé en mémoire vive (RAM) et effacé à la fermeture de la session.<br>
@@ -237,7 +237,7 @@ if page == "Accueil":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("###Consentement")
+    st.markdown("### Consentement")
     st.markdown("""
     <div class="consent-box">
     Avant d'utiliser MediPredict, vous devez confirmer avoir lu et compris :
@@ -260,7 +260,7 @@ if page == "Accueil":
 
 #Page 2
 elif page == "Mon profil de risque":
-    st.markdown("#Mon profil de risque")
+    st.markdown("# Mon profil de risque")
     st.markdown("Renseignez vos indicateurs de santé pour obtenir une estimation personnalisée.")
 
     if not st.session_state.consent_given:
@@ -285,7 +285,7 @@ elif page == "Mon profil de risque":
 
     with col_form:
         with st.form("profil_form"):
-            st.markdown("####Vos informations de santé")
+            st.markdown("#### Vos informations de santé")
 
             #Gestion des pregnancies
             st.markdown("**Nombre de grossesses**")
@@ -346,13 +346,17 @@ elif page == "Mon profil de risque":
             submitted = st.form_submit_button("Analyser mon profil", type="primary", use_container_width=True)
 
     with col_info:
-        st.markdown("####Guide de saisie")
+        st.markdown("#### Guide de saisie")
         st.markdown("""
-        <div style="background:#1e293b; border-radius:8px; padding:1rem; font-size:0.82rem; color:#94a3b8; line-height:1.9;">
-        <b style="color:#f1f5f9">IMC normal</b><br>18.5 – 24.9<br><br>
-        <b style="color:#f1f5f9">Glucose à jeun</b><br>Normal &lt; 100 mg/dL<br>Prédiabète : 100–125<br>Diabète ≥ 126<br><br>
-        <b style="color:#f1f5f9">Pression diastolique</b><br>Normale &lt; 80 mm Hg<br><br>
-        <b style="color:#f1f5f9">Score familial</b><br>Faible : &lt; 0.3<br>Moyen : 0.3–0.7<br>Élevé : &gt; 0.7
+        <div style="background:#1e293b; border-radius:8px; padding:1rem; font-size:0.82rem; color:#f1f5f9; line-height:2.0;">
+        <b>Grossesses</b><br>Min : 0 — Max : 17<br><br>
+        <b>Glucose (mg/dL)</b><br>Min : 44 — Max : 199<br><br>
+        <b>Pression artérielle (mm Hg)</b><br>Min : 24 — Max : 122<br><br>
+        <b>Pli cutané (mm)</b><br>Min : 7 — Max : 99<br><br>
+        <b>Insuline (µU/mL)</b><br>Min : 14 — Max : 846<br><br>
+        <b>IMC (kg/m²)</b><br>Min : 18.2 — Max : 67.1<br><br>
+        <b>Antécédents familiaux</b><br>Min : 0.078 — Max : 2.42<br><br>
+        <b>Âge (années)</b><br>Min : 21 — Max : 81
         </div>
         """, unsafe_allow_html=True)
 
@@ -396,7 +400,7 @@ elif page == "Mon profil de risque":
     if st.session_state.prediction_done and st.session_state.last_result:
         r = st.session_state.last_result
         st.markdown("---")
-        st.markdown("##Votre résultat")
+        st.markdown("## Votre résultat")
 
         col_gauge, col_text = st.columns([1, 2])
         with col_gauge:
@@ -407,9 +411,9 @@ elif page == "Mon profil de risque":
             st.markdown(f"""
             <div class="metric-card">
             <h3 style="color:{r['risk_color']}">Risque {r['risk_level']}</h3>
-            <p style="color:#94a3b8; font-size:1rem;">{r['risk_desc']}</p>
+            <p style="color:#f1f5f9; font-size:1rem;">{r['risk_desc']}</p>
             <br>
-            <p style="color:#64748b; font-size:0.82rem;">
+            <p style="color:#f1f5f9; font-size:0.82rem;">
             Ce résultat est une <strong>estimation statistique</strong>, non un diagnostic médical.
             La probabilité estimée reflète la similitude de votre profil avec les cas du dataset
             d'entraînement (population amérindienne Pima). Consultez un médecin pour un bilan personnalisé.
@@ -422,7 +426,7 @@ elif page == "Mon profil de risque":
 
 #Page 3
 elif page == "Comprendre ma prédiction":
-    st.markdown("#Comprendre ma prédiction")
+    st.markdown("# Comprendre ma prédiction")
 
     if not st.session_state.consent_given:
         st.warning("Veuillez d'abord donner votre consentement sur la page **Accueil**.")
@@ -449,7 +453,7 @@ elif page == "Comprendre ma prédiction":
         shap_vals = compute_shap_values(explainer, X_user_scaled)
 
     # Explication naturelle
-    st.markdown("###Explication de votre résultat")
+    st.markdown("### Explication de votre résultat")
     explanation = generate_natural_explanation(shap_vals[0], input_df, r["proba"])
     st.markdown(f"""
     <div class="metric-card">
@@ -460,35 +464,37 @@ elif page == "Comprendre ma prédiction":
     st.markdown("---")
 
     # Graphique SHAP
-    st.markdown("###Impact de chaque variable (SHAP)")
-    st.markdown('<p style="color:#64748b; font-size:0.85rem;">Rouge = augmente le risque &nbsp;|&nbsp;Vert = diminue le risque</p>', unsafe_allow_html=True)
+    st.markdown("### Impact de chaque variable (SHAP)")
+    st.markdown('<p style="color:#f1f5f9; font-size:0.85rem;">Rouge = augmente le risque &nbsp;|&nbsp;Vert = diminue le risque</p>', unsafe_allow_html=True)
     fig_shap = plot_shap_bar_themed(shap_vals[0], theme=THEME)
     st.pyplot(fig_shap, use_container_width=True)
 
     st.markdown("---")
 
     # Comparaison avec le dataset
-    st.markdown("###Votre profil comparé au dataset")
-    st.markdown('<p style="color:#64748b; font-size:0.85rem;">La ligne jaune pointillée représente votre valeur.</p>', unsafe_allow_html=True)
+    st.markdown("### Votre profil comparé au dataset")
+    st.markdown('<p style="color:#f1f5f9; font-size:0.85rem;">La ligne jaune pointillée représente votre valeur.</p>', unsafe_allow_html=True)
     fig_dist = plot_feature_distributions(df, r["user_values"], theme=THEME)
     st.plotly_chart(fig_dist, use_container_width=True)
 
     st.markdown("---")
 
     #Recommandations
-    st.markdown("###Recommandations personnalisées")
+    st.markdown("### Recommandations personnalisées")
     recs = generate_recommendations(shap_vals[0], input_df)
     for rec in recs:
-        level_icon = "🔴" if rec["level"] == "high" else "🟢"
+        level_label = "Attention" if rec["level"] == "high" else "Normal"
+        level_color = "#ef4444" if rec["level"] == "high" else "#22c55e"
         st.markdown(f"""
         <div class="rec-card">
-        {level_icon} <strong>{rec['feature']}</strong> (valeur : {rec['value']:.1f})<br>
+        <span style="color:{level_color}; font-weight:700;">[{level_label}]</span>
+        <strong> {rec['feature']}</strong> (valeur : {rec['value']:.1f})<br>
         {rec['text']}
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="margin-top:1.5rem; padding:1rem; background:#1e293b; border-radius:8px; font-size:0.82rem; color:#64748b;">
+    <div style="margin-top:1.5rem; padding:1rem; background:#1e293b; border-radius:8px; font-size:0.82rem; color:#f1f5f9;">
     Ces recommandations sont génériques et basées sur des critères épidémiologiques généraux.
     Elles ne remplacent pas un avis médical personnalisé. Consultez un professionnel de santé
     pour toute décision médicale.
@@ -498,7 +504,7 @@ elif page == "Comprendre ma prédiction":
 
 #Page 4
 elif page == "Explorer les données":
-    st.markdown("#Explorer les données")
+    st.markdown("# Explorer les données")
     st.markdown("Visualisez le dataset et les performances du modèle en toute transparence.")
 
     try:
@@ -550,10 +556,10 @@ elif page == "Explorer les données":
             st.plotly_chart(fig_cm, use_container_width=True)
 
     with tab3:
-        st.markdown("####Description du modèle")
+        st.markdown("#### Description du modèle")
         st.markdown("""
         <div class="metric-card">
-        <p style="color:#94a3b8; font-size:0.9rem; line-height:1.8;">
+        <p style="color:#f1f5f9; font-size:0.9rem; line-height:1.8;">
         <strong style="color:#f1f5f9">Algorithme :</strong> Régression Logistique (scikit-learn, max_iter=1000)<br>
         <strong style="color:#f1f5f9">Choix éthique :</strong> Préféré à Random Forest pour son interprétabilité native
         (coefficients directement lisibles) et sa stabilité sur un dataset de taille limitée (768 obs.).<br>
@@ -564,30 +570,30 @@ elif page == "Explorer les données":
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("####Limites et biais identifiés")
+        st.markdown("#### Limites et biais identifiés")
         st.markdown("""
-        <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:2;">
-        <span style="color:#ef4444">●</span> <strong style="color:#f1f5f9">Biais de représentation :</strong>
+                <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:2;">
+        <strong>[Biais majeur]</strong> Biais de représentation :
         Le dataset Pima Indians est composé exclusivement de femmes amérindiennes de plus de 21 ans.
         Il n'est pas représentatif de la population française générale (hommes, autres ethnies, autres tranches d'âge).<br>
-        <span style="color:#f59e0b">●</span> <strong style="color:#f1f5f9">Biais d'âge :</strong>
+        <strong>[Biais mineur]</strong> Biais d'âge :
         Les performances du modèle sont légèrement inférieures sur les moins de 30 ans (sous-représentés dans le dataset).<br>
-        <span style="color:#f59e0b">●</span> <strong style="color:#f1f5f9">Variable Pregnancies :</strong>
+        <strong>[Biais mineur]</strong> Variable Pregnancies :
         Non applicable aux hommes et aux femmes sans grossesses. Une option "Non applicable" est proposée dans le formulaire.<br>
-        <span style="color:#22c55e">●</span> <strong style="color:#f1f5f9">Mesure corrective :</strong>
+        <strong>[Mesure corrective]</strong>
         Ces limites sont clairement communiquées à l'utilisateur. L'outil est présenté comme un outil de sensibilisation,
         non comme un diagnostic.
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("####Conformité RGPD")
+        st.markdown("#### Conformité RGPD")
         st.markdown("""
-        <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:2;">
-        <span style="color:#22c55e">✓</span> Consentement explicite recueilli avant tout traitement<br>
-        <span style="color:#22c55e">✓</span> Aucune donnée personnelle stockée (traitement en mémoire uniquement)<br>
-        <span style="color:#22c55e">✓</span> Finalité clairement définie (sensibilisation uniquement)<br>
-        <span style="color:#22c55e">✓</span> Mention légale visible sur la page d'accueil<br>
-        <span style="color:#22c55e">✓</span> Base légale : consentement (Art. 6.1.a RGPD)<br>
-        <span style="color:#22c55e">✓</span> Validation des entrées côté serveur (plages biologiquement plausibles)
+        <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:2;">
+        [OK] Consentement explicite recueilli avant tout traitement<br>
+        [OK] Aucune donnée personnelle stockée (traitement en mémoire uniquement)<br>
+        [OK] Finalité clairement définie (sensibilisation uniquement)<br>
+        [OK] Mention légale visible sur la page d'accueil<br>
+        [OK] Base légale : consentement (Art. 6.1.a RGPD)<br>
+        [OK] Validation des entrées côté serveur (plages biologiquement plausibles)
         </div>
         """, unsafe_allow_html=True)

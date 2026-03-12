@@ -188,8 +188,7 @@ if page == "Accueil":
     <div class="legal-banner">
     <strong>Mention légale obligatoire</strong><br>
     Cet outil est un <strong>outil de sensibilisation uniquement</strong>. Il ne constitue
-    en aucun cas un avis médical, un diagnostic ou une prescription. Les résultats fournis
-    sont des estimations statistiques basées sur un dataset de recherche.
+    en <strong>aucun cas un avis médical</strong>, un diagnostic ou une prescription. Les résultats fournis sont des estimations statistiques basées sur un dataset de recherche.
     <strong>En cas de doute ou d'inquiétude concernant votre santé, consultez impérativement
     un professionnel de santé qualifié.</strong>
     </div>
@@ -202,7 +201,7 @@ if page == "Accueil":
         <h4>Objectif</h4>
         <p style="color:#f1f5f9; font-size:0.9rem;">
         Évaluer votre profil de risque de diabète de type 2 à partir
-        d'indicateurs de santé anonymes et recevoir des explications claires.
+        d'indicateurs de santé et recevoir des explications claires.
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -232,7 +231,7 @@ if page == "Accueil":
     <div style="background:#1e293b; border-radius:8px; padding:1rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:1.8;">
     • Les données saisies dans ce formulaire sont utilisées <strong>uniquement</strong> pour calculer votre estimation de risque.<br>
     • Ces données ne sont <strong>ni enregistrées, ni transmises à des tiers, ni utilisées à des fins commerciales</strong>.<br>
-    • Le traitement est intégralement réalisé en mémoire vive (RAM) et effacé à la fermeture de la session.<br>
+    • Le traitement est intégralement réalisé en mémoire et effacé à la fermeture de la session.<br>
     • Conformément au RGPD (Art. 5), vous bénéficiez d'un droit d'accès, de rectification et d'effacement de vos données.
     </div>
     """, unsafe_allow_html=True)
@@ -276,7 +275,7 @@ elif page == "Mon profil de risque":
 
     st.markdown("""
     <div class="legal-banner">
-    ℹRemplissez les champs ci-dessous avec vos valeurs médicales. Si une valeur ne s'applique pas,
+    Remplissez les champs ci-dessous avec vos valeurs médicales. Si une valeur ne s'applique pas,
     laissez la valeur par défaut ou entrez 0. Ces données ne seront pas conservées.
     </div>
     """, unsafe_allow_html=True)
@@ -306,36 +305,36 @@ elif page == "Mon profil de risque":
 
             with col1:
                 glucose = st.number_input(
-                    "Taux de glucose (mg/dL)",
+                    "Taux de glucose",
                     min_value=44, max_value=199, value=120, step=1,
-                    help="Concentration en glucose plasmatique 2h après un test de tolérance au glucose (44–199 mg/dL)"
+                    help="Concentration en glucose en (mg/dL)"
                 )
                 bp = st.number_input(
-                    "Pression artérielle diastolique (mm Hg)",
+                    "Pression artérielle",
                     min_value=24, max_value=122, value=72, step=1,
-                    help="Pression artérielle diastolique mesurée en mm Hg (24–122)"
+                    help="Pression artérielle diastolique en (mm Hg)"
                 )
                 skin = st.number_input(
-                    "Épaisseur du pli cutané tricipital (mm)",
+                    "Épaisseur de la peau",
                     min_value=7, max_value=99, value=29, step=1,
-                    help="Épaisseur du pli cutané du triceps en mm (7–99)"
+                    help="Épaisseur de la peau en mm"
                 )
                 insulin = st.number_input(
-                    "Insuline sérique 2h (µU/mL)",
+                    "Insuline",
                     min_value=14, max_value=846, value=80, step=1,
-                    help="Concentration en insuline sérique 2h après test (14–846 µU/mL)"
+                    help="Concentration en insuline"
                 )
 
             with col2:
                 bmi = st.number_input(
-                    "Indice de masse corporelle — IMC (kg/m²)",
+                    "Indice de masse corporelle",
                     min_value=18.2, max_value=67.1, value=32.0, step=0.1,
-                    help="IMC = Poids(kg) / Taille²(m). Normal : 18.5–24.9 ; Surpoids : 25–29.9"
+                    help="IMC = Poids(kg) / Taille²(m)"
                 )
                 dpf = st.number_input(
-                    "Score d'antécédents familiaux (DiabetesPedigreeFunction)",
+                    "Score d'antécédents familiaux",
                     min_value=0.078, max_value=2.42, value=0.47, step=0.001,
-                    help="Score calculé à partir des antécédents familiaux de diabète (0.078–2.42)"
+                    help="Score calculé à partir des antécédents familiaux de diabète"
                 )
                 age = st.number_input(
                     "Âge (années)",
@@ -352,7 +351,7 @@ elif page == "Mon profil de risque":
         <b>Grossesses</b><br>Min : 0 — Max : 17<br><br>
         <b>Glucose (mg/dL)</b><br>Min : 44 — Max : 199<br><br>
         <b>Pression artérielle (mm Hg)</b><br>Min : 24 — Max : 122<br><br>
-        <b>Pli cutané (mm)</b><br>Min : 7 — Max : 99<br><br>
+        <b>Épaisseur de la peau (mm)</b><br>Min : 7 — Max : 99<br><br>
         <b>Insuline (µU/mL)</b><br>Min : 14 — Max : 846<br><br>
         <b>IMC (kg/m²)</b><br>Min : 18.2 — Max : 67.1<br><br>
         <b>Antécédents familiaux</b><br>Min : 0.078 — Max : 2.42<br><br>
@@ -413,7 +412,7 @@ elif page == "Mon profil de risque":
             <h3 style="color:{r['risk_color']}">Risque {r['risk_level']}</h3>
             <p style="color:#f1f5f9; font-size:1rem;">{r['risk_desc']}</p>
             <br>
-            <p style="color:#f1f5f9; font-size:0.82rem;">
+            <p style="color:#f1f5f9; font-size:1rem;">
             Ce résultat est une <strong>estimation statistique</strong>, non un diagnostic médical.
             La probabilité estimée reflète la similitude de votre profil avec les cas du dataset
             d'entraînement (population amérindienne Pima). Consultez un médecin pour un bilan personnalisé.
@@ -465,7 +464,7 @@ elif page == "Comprendre ma prédiction":
 
     # Graphique SHAP
     st.markdown("### Impact de chaque variable (SHAP)")
-    st.markdown('<p style="color:#f1f5f9; font-size:0.85rem;">Rouge = augmente le risque &nbsp;|&nbsp;Vert = diminue le risque</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color:#f1f5f9; font-size:0.85rem;">Rouge/Droite = augmente le risque &nbsp;|&nbsp;Vert/Gauche = diminue le risque</p>', unsafe_allow_html=True)
     fig_shap = plot_shap_bar_themed(shap_vals[0], theme=THEME)
     st.pyplot(fig_shap, use_container_width=True)
 
@@ -495,8 +494,7 @@ elif page == "Comprendre ma prédiction":
 
     st.markdown("""
     <div style="margin-top:1.5rem; padding:1rem; background:#1e293b; border-radius:8px; font-size:0.82rem; color:#f1f5f9;">
-    Ces recommandations sont génériques et basées sur des critères épidémiologiques généraux.
-    Elles ne remplacent pas un avis médical personnalisé. Consultez un professionnel de santé
+    Ces recommandations sont génériques. Elles ne remplacent pas un avis médical. Consultez un professionnel de santé
     pour toute décision médicale.
     </div>
     """, unsafe_allow_html=True)
@@ -560,12 +558,9 @@ elif page == "Explorer les données":
         st.markdown("""
         <div class="metric-card">
         <p style="color:#f1f5f9; font-size:0.9rem; line-height:1.8;">
-        <strong style="color:#f1f5f9">Algorithme :</strong> Régression Logistique (scikit-learn, max_iter=1000)<br>
-        <strong style="color:#f1f5f9">Choix éthique :</strong> Préféré à Random Forest pour son interprétabilité native
-        (coefficients directement lisibles) et sa stabilité sur un dataset de taille limitée (768 obs.).<br>
-        <strong style="color:#f1f5f9">Normalisation :</strong> StandardScaler (moyenne=0, écart-type=1)<br>
-        <strong style="color:#f1f5f9">Reproductibilité :</strong> random_state=42 fixé sur toutes les opérations aléatoires.<br>
-        <strong style="color:#f1f5f9">Explicabilité :</strong> SHAP LinearExplainer — valeurs exactes (non approximées).
+        <strong style="color:#f1f5f9">Algorithme :</strong> Régression Logistique<br>
+        <strong style="color:#f1f5f9">Normalisation :</strong> StandardScaler<br>
+        <strong style="color:#f1f5f9">Explicabilité :</strong> SHAP LinearExplainer — valeurs exactes (non approximées)
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -575,11 +570,11 @@ elif page == "Explorer les données":
                 <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:2;">
         <strong>[Biais majeur]</strong> Biais de représentation :
         Le dataset Pima Indians est composé exclusivement de femmes amérindiennes de plus de 21 ans.
-        Il n'est pas représentatif de la population française générale (hommes, autres ethnies, autres tranches d'âge).<br>
+        Il n'est pas représentatif de la population française générale (hommes, autres ethnies et autres tranches d'âge)<br>
         <strong>[Biais mineur]</strong> Biais d'âge :
-        Les performances du modèle sont légèrement inférieures sur les moins de 30 ans (sous-représentés dans le dataset).<br>
+        Les performances du modèle sont légèrement inférieures sur les moins de 30 ans (sous-représentés dans le dataset)<br>
         <strong>[Biais mineur]</strong> Variable Pregnancies :
-        Non applicable aux hommes et aux femmes sans grossesses. Une option "Non applicable" est proposée dans le formulaire.<br>
+        Non applicable aux hommes et aux femmes sans grossesses. Une option "Non applicable" est proposée dans le formulaire<br>
         <strong>[Mesure corrective]</strong>
         Ces limites sont clairement communiquées à l'utilisateur. L'outil est présenté comme un outil de sensibilisation,
         non comme un diagnostic.

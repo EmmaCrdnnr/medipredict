@@ -175,7 +175,7 @@ if "last_result" not in st.session_state:
 
 #Barre de navigation
 with st.sidebar:
-    st.markdown("## 🩺 MediPredict")
+    st.markdown("## MediPredict")
     st.markdown('<p class="sidebar-label">NAVIGATION</p>', unsafe_allow_html=True)
     page = st.radio(
         label="",
@@ -195,7 +195,7 @@ with st.sidebar:
 
 #Page 1
 if page == "Accueil":
-    st.markdown("#MediPredict")
+    st.markdown("# MediPredict")
     st.markdown("#### Outil de sensibilisation au risque de diabète de type 2")
     st.markdown("---")
 
@@ -243,7 +243,7 @@ if page == "Accueil":
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("###Politique de confidentialité")
+    st.markdown("### Politique de confidentialité")
     st.markdown("""
     <div style="background:#1e293b; border-radius:8px; padding:1rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:1.8;">
     • Les données saisies dans ce formulaire sont utilisées <strong>uniquement</strong> pour calculer votre estimation de risque.<br>
@@ -253,7 +253,7 @@ if page == "Accueil":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("###Consentement")
+    st.markdown("### Consentement")
     st.markdown("""
     <div class="consent-box">
     Avant d'utiliser MediPredict, vous devez confirmer avoir lu et compris :
@@ -276,7 +276,7 @@ if page == "Accueil":
 
 #Page 2
 elif page == "Mon profil de risque":
-    st.markdown("#Mon profil de risque")
+    st.markdown("# Mon profil de risque")
     st.markdown("Renseignez vos indicateurs de santé pour obtenir une estimation personnalisée.")
 
     if not st.session_state.consent_given:
@@ -301,7 +301,7 @@ elif page == "Mon profil de risque":
 
     with col_form:
         with st.form("profil_form"):
-            st.markdown("####Vos informations de santé")
+            st.markdown("#### Vos informations de santé")
 
             #Gestion des pregnancies
             st.markdown("**Nombre de grossesses**")
@@ -322,47 +322,47 @@ elif page == "Mon profil de risque":
 
             with col1:
                 glucose = st.number_input(
-                    "Taux de glucose (mg/dL)",
+                    "Taux de glucose",
                     min_value=44, max_value=199, value=120, step=1,
-                    help="Concentration en glucose plasmatique 2h après un test de tolérance au glucose (44–199 mg/dL)"
+                    help="Concentration du glucose (mg/dL) 2h après un test - (min = 44, max = 199)"
                 )
                 bp = st.number_input(
-                    "Pression artérielle diastolique (mm Hg)",
+                    "Pression artérielle",
                     min_value=24, max_value=122, value=72, step=1,
-                    help="Pression artérielle diastolique mesurée en mm Hg (24–122)"
+                    help="Pression artérielle diastolique mesurée en mm/Hg - (min = 24, max = 122)"
                 )
                 skin = st.number_input(
-                    "Épaisseur du pli cutané tricipital (mm)",
+                    "Épaisseur de la peau",
                     min_value=7, max_value=99, value=29, step=1,
-                    help="Épaisseur du pli cutané du triceps en mm (7–99)"
+                    help="Épaisseur du pli cutané en mm - (min = 7, max = 99)"
                 )
                 insulin = st.number_input(
-                    "Insuline sérique 2h (µU/mL)",
+                    "Insuline",
                     min_value=14, max_value=846, value=80, step=1,
-                    help="Concentration en insuline sérique 2h après test (14–846 µU/mL)"
+                    help="Concentration en insuline 2h après un test - (min = 14, max = 846)"
                 )
 
             with col2:
                 bmi = st.number_input(
-                    "Indice de masse corporelle — IMC (kg/m²)",
-                    min_value=18.2, max_value=67.1, value=32.0, step=0.1,
-                    help="IMC = Poids(kg) / Taille²(m). Normal : 18.5–24.9 ; Surpoids : 25–29.9"
+                    "Indice de masse corporelle",
+                    min_value=18.1, max_value=67.1, value=32.0, step=0.1,
+                    help="IMC = Poids(kg) / Taille²(m) - (min = 18.2, max = 67.1)"
                 )
                 dpf = st.number_input(
-                    "Score d'antécédents familiaux (DiabetesPedigreeFunction)",
+                    "Score d'antécédents familiaux",
                     min_value=0.078, max_value=2.42, value=0.47, step=0.001,
-                    help="Score calculé à partir des antécédents familiaux de diabète (0.078–2.42)"
+                    help="Score calculé à partir des antécédents familiaux de diabète - (min = 0.078, max = 2.42)"
                 )
                 age = st.number_input(
                     "Âge (années)",
                     min_value=21, max_value=81, value=33, step=1,
-                    help="Votre âge en années"
+                    help="Votre âge en années - (min = 21, max = 81)"
                 )
 
-            submitted = st.form_submit_button("🔍 Analyser mon profil", type="primary", use_container_width=True)
+            submitted = st.form_submit_button("Analyser mon profil", type="primary", use_container_width=True)
 
     with col_info:
-        st.markdown("####Guide de saisie")
+        st.markdown("#### Guide de saisie")
         st.markdown("""
         <div style="background:#1e293b; border-radius:8px; padding:1rem; font-size:0.82rem; color:#94a3b8; line-height:1.9;">
         <b style="color:#f1f5f9">IMC normal</b><br>18.5 – 24.9<br><br>
@@ -412,7 +412,7 @@ elif page == "Mon profil de risque":
     if st.session_state.prediction_done and st.session_state.last_result:
         r = st.session_state.last_result
         st.markdown("---")
-        st.markdown("##Votre résultat")
+        st.markdown("## Votre résultat")
 
         col_gauge, col_text = st.columns([1, 2])
         with col_gauge:
@@ -438,14 +438,14 @@ elif page == "Mon profil de risque":
 
 #Page 3
 elif page == "Comprendre ma prédiction":
-    st.markdown("#Comprendre ma prédiction")
+    st.markdown("# Comprendre ma prédiction")
 
     if not st.session_state.consent_given:
         st.warning("Veuillez d'abord donner votre consentement sur la page **Accueil**.")
         st.stop()
 
     if not st.session_state.prediction_done or not st.session_state.last_result:
-        st.info("ℹCommencez par remplir votre profil sur la page **Mon profil de risque**.")
+        st.info("Commencez par remplir votre profil sur la page **Mon profil de risque**.")
         st.stop()
 
     try:
@@ -458,14 +458,14 @@ elif page == "Comprendre ma prédiction":
     r = st.session_state.last_result
     input_df = r["input_df"]
 
-    # Calcul SHAP
+    #Calcul SHAP
     with st.spinner("Calcul des explications SHAP en cours..."):
         explainer, X_train_scaled = load_explainer(model, scaler, df)
         X_user_scaled = scaler.transform(input_df)
         shap_vals = compute_shap_values(explainer, X_user_scaled)
 
-    # Explication naturelle
-    st.markdown("###Explication de votre résultat")
+    #Explication naturelle
+    st.markdown("### Explication de votre résultat")
     explanation = generate_natural_explanation(shap_vals[0], input_df, r["proba"])
     st.markdown(f"""
     <div class="metric-card">
@@ -476,7 +476,7 @@ elif page == "Comprendre ma prédiction":
     st.markdown("---")
 
     # Graphique SHAP
-    st.markdown("###Impact de chaque variable (SHAP)")
+    st.markdown("### Impact de chaque variable (SHAP)")
     st.markdown('<p style="color:#64748b; font-size:0.85rem;">Rouge = augmente le risque &nbsp;|&nbsp;Vert = diminue le risque</p>', unsafe_allow_html=True)
     fig_shap = plot_shap_bar(shap_vals[0])
     st.pyplot(fig_shap, use_container_width=True)
@@ -484,7 +484,7 @@ elif page == "Comprendre ma prédiction":
     st.markdown("---")
 
     # Comparaison avec le dataset
-    st.markdown("###Votre profil comparé au dataset")
+    st.markdown("### Votre profil comparé au dataset")
     st.markdown('<p style="color:#64748b; font-size:0.85rem;">La ligne jaune pointillée représente votre valeur.</p>', unsafe_allow_html=True)
     fig_dist = plot_feature_distributions(df, r["user_values"])
     st.plotly_chart(fig_dist, use_container_width=True)
@@ -514,7 +514,7 @@ elif page == "Comprendre ma prédiction":
 
 #Page 4
 elif page == "Explorer les données":
-    st.markdown("#Explorer les données")
+    st.markdown("# Explorer les données")
     st.markdown("Visualisez le dataset et les performances du modèle en toute transparence.")
 
     try:
@@ -566,7 +566,7 @@ elif page == "Explorer les données":
             st.plotly_chart(fig_cm, use_container_width=True)
 
     with tab3:
-        st.markdown("####Description du modèle")
+        st.markdown("#### Description du modèle")
         st.markdown("""
         <div class="metric-card">
         <p style="color:#94a3b8; font-size:0.9rem; line-height:1.8;">
@@ -580,7 +580,7 @@ elif page == "Explorer les données":
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("####Limites et biais identifiés")
+        st.markdown("#### Limites et biais identifiés")
         st.markdown("""
         <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:2;">
         <span style="color:#ef4444">●</span> <strong style="color:#f1f5f9">Biais de représentation :</strong>
@@ -596,7 +596,7 @@ elif page == "Explorer les données":
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("####Conformité RGPD")
+        st.markdown("#### Conformité RGPD")
         st.markdown("""
         <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#94a3b8; font-size:0.88rem; line-height:2;">
         <span style="color:#22c55e">✓</span> Consentement explicite recueilli avant tout traitement<br>

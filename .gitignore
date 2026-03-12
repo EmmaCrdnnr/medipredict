@@ -1,15 +1,15 @@
-# Environnements virtuels
+#Environnements virtuels
 venv/
 .venv/
 env/
 
-# Secrets et variables d'environnement
+#Secrets et variables d'environnement
 .env
 .env.*
 !.env.example
 .streamlit/secrets.toml
 
-# Python
+#Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -20,18 +20,15 @@ __pycache__/
 dist/
 build/
 
-# Jupyter
+#Jupyter
 .ipynb_checkpoints/
 *.ipynb
 
-# Données personnelles réelles (ne jamais committer)
+#Données personnelles réelles (ne jamais committer)
 data/real_*.csv
 data/personal_*.csv
 
-# Modèles volumineux (optionnel — à commenter si vous souhaitez versionner le modèle)
-# model/*.pkl
-
-# Système
+#Système
 .DS_Store
 Thumbs.db
 *.swp

@@ -40,9 +40,9 @@ def plot_risk_gauge(proba: float) -> go.Figure:
             "bgcolor": CARD_BG,
             "bordercolor": CARD_BG,
             "steps": [
-                {"range": [0, 30], "color": "#14532d33"},
-                {"range": [30, 60], "color": "#78350f33"},
-                {"range": [60, 100], "color": "#7f1d1d33"},
+                {"range": [0, 30], "color": "rgba(20, 83, 45, 0.2)"},
+                {"range": [30, 60], "color": "rgba(120, 53, 15, 0.2)"},
+                {"range": [60, 100], "color": "rgba(127, 29, 29, 0.2)"},
             ],
             "threshold": {
                 "line": {"color": color, "width": 3},

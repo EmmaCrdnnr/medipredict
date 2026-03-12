@@ -1,11 +1,11 @@
-#MediPredict — Prédiction du risque de diabète de type 2
+MediPredict — Prédiction du risque de diabète de type 2
 
 Application web de sensibilisation développée dans le cadre du Mastère Data & IA — NEXA Digital School.
 
-##Mention légale
+Mention légale
 Cet outil est un **outil de sensibilisation uniquement**. Il ne constitue en aucun cas un diagnostic médical. Consultez un professionnel de santé pour tout avis médical.
 
-##Installation et lancement
+Installation et lancement
 
 ```bash
 # 1. Cloner le dépôt
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-##Structure du projet
+Structure du projet
 
 ```
 medipredict/
@@ -49,20 +49,20 @@ medipredict/
 └── README.md
 ```
 
-##Déploiement sur Streamlit Cloud
+Déploiement sur Streamlit Cloud
 
 1. Pushez votre code sur GitHub (dépôt public)
 2. Connectez-vous sur [share.streamlit.io](https://share.streamlit.io)
 3. Sélectionnez votre dépôt, branche `main`, fichier `app.py`
 4. Cliquez sur **Deploy**
 
-##Conformité RGPD
+Conformité RGPD
 - Aucune donnée utilisateur n'est stockée
 - Consentement explicite requis avant utilisation
 - Traitement en mémoire uniquement
 - Mention légale visible sur la page d'accueil
 
-##Modèle
+Modèle
 - **Algorithme** : Régression Logistique (scikit-learn)
 - **Dataset** : Pima Indians Diabetes (768 rows, 8 features)
 - **Explicabilité** : SHAP LinearExplainer

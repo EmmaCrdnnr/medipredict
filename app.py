@@ -204,8 +204,7 @@ if page == "Accueil":
     <div class="legal-banner">
     <strong>Mention légale obligatoire</strong><br>
     Cet outil est un <strong>outil de sensibilisation uniquement</strong>. Il ne constitue
-    en aucun cas un avis médical, un diagnostic ou une prescription. Les résultats fournis
-    sont des estimations statistiques basées sur un dataset de recherche.
+    en aucun cas un avis médical. Les résultats fournis sont des estimations statistiques basées sur un dataset de recherche.
     <strong>En cas de doute ou d'inquiétude concernant votre santé, consultez impérativement
     un professionnel de santé qualifié.</strong>
     </div>
@@ -292,7 +291,7 @@ elif page == "Mon profil de risque":
 
     st.markdown("""
     <div class="legal-banner">
-    ℹRemplissez les champs ci-dessous avec vos valeurs médicales. Si une valeur ne s'applique pas,
+    Remplissez les champs ci-dessous avec vos valeurs médicales. Si une valeur ne s'applique pas,
     laissez la valeur par défaut ou entrez 0. Ces données ne seront pas conservées.
     </div>
     """, unsafe_allow_html=True)
@@ -505,9 +504,8 @@ elif page == "Comprendre ma prédiction":
 
     st.markdown("""
     <div style="margin-top:1.5rem; padding:1rem; background:#1e293b; border-radius:8px; font-size:0.82rem; color:#64748b;">
-    Ces recommandations sont génériques et basées sur des critères épidémiologiques généraux.
-    Elles ne remplacent pas un avis médical personnalisé. Consultez un professionnel de santé
-    pour toute décision médicale.
+    Ces recommandations sont basées sur des critères généraux et non représentatif de certaines populations.
+    Elles ne remplacent pas un avis médical. Consultez un professionnel de santé pour toute décision médicale.
     </div>
     """, unsafe_allow_html=True)
 

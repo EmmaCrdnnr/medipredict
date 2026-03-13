@@ -47,9 +47,8 @@ def plot_risk_gauge(proba: float, theme: str = "light") -> go.Figure:
     color = GREEN if proba < 0.30 else (AMBER if proba < 0.60 else RED)
     label = "FAIBLE" if proba < 0.30 else ("MODÉRÉ" if proba < 0.60 else "ÉLEVÉ")
     fig = go.Figure(go.Indicator(
-        mode="gauge+number",
+        mode="gauge",
         value=round(proba * 100, 1),
-        number={"suffix": "%", "font": {"size": 40, "color": color}},
         gauge={
             "axis": {"range": [0, 100], "tickcolor": t["muted"], "tickfont": {"color": t["muted"]}},
             "bar": {"color": color},
@@ -66,10 +65,10 @@ def plot_risk_gauge(proba: float, theme: str = "light") -> go.Figure:
                 "value": proba * 100
             }
         },
-        title={"text": f"Niveau de risque : <b>{label}</b>", "font": {"size": 16, "color": color}},
+        title={"text": f"<b>{label}</b>", "font": {"size": 28, "color": color}},
         domain={"x": [0, 1], "y": [0, 1]}
     ))
-    fig.update_layout(**_layout(theme), height=280)
+    fig.update_layout(**_layout(theme), height=250)
     return fig
 
 

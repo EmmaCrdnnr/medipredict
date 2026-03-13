@@ -57,7 +57,8 @@ def generate_natural_explanation(shap_vals: np.ndarray, input_df: pd.DataFrame, 
         fname = feature_names[i]
         label = FEATURE_LABELS[fname]
         direction = "augmente le risque" if sv[i] > 0 else "diminue le risque"
-        lines.append(f"<br><strong>{rank}. {label}</strong> — {direction}")
+        contribution = round(abs(sv[i]) * 100, 1)
+        lines.append(f"<br><strong>{rank}. {label}</strong> — {direction} (contribution : {contribution}%)")
 
     return "\n".join(lines)
 

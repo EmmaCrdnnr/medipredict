@@ -452,11 +452,9 @@ elif page == "Comprendre ma prédiction":
         shap_vals = compute_shap_values(explainer, X_user_scaled)
 
     # Explication naturelle
-    st.markdown("### Explication de votre résultat")
-    explanation = generate_natural_explanation(shap_vals[0], input_df, r["proba"])
     st.markdown(f"""
     <div class="metric-card">
-    {explanation.replace(chr(10), '<br>')}
+    {explanation}
     </div>
     """, unsafe_allow_html=True)
 

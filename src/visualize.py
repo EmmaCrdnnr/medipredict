@@ -50,7 +50,7 @@ def plot_risk_gauge(proba: float, theme: str = "light") -> go.Figure:
         mode="gauge",
         value=round(proba * 100, 1),
         gauge={
-            "axis": {"range": [0, 100], "tickcolor": t["muted"], "tickfont": {"color": t["muted"]}},
+            "axis": {"range": [0, 100], "visible": False},
             "bar": {"color": color},
             "bgcolor": t["card"],
             "bordercolor": t["border"],

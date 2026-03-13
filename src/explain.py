@@ -42,7 +42,6 @@ def compute_shap_values(explainer, X_scaled: np.ndarray) -> np.ndarray:
     return explainer.shap_values(X_scaled)
 
 def generate_natural_explanation(shap_vals: np.ndarray, input_df: pd.DataFrame, proba: float) -> str:
-    """Génère une explication en langage naturel à partir des valeurs SHAP."""
     sv = np.array(shap_vals).flatten()
     feature_names = FEATURE_NAMES
 
@@ -51,16 +50,16 @@ def generate_natural_explanation(shap_vals: np.ndarray, input_df: pd.DataFrame, 
 
     risk_level = "faible" if proba < 0.30 else ("modéré" if proba < 0.60 else "élevé")
 
-    lines = [f"**Analyse de votre profil** — Risque estimé : **{proba:.0%}** ({risk_level})\n"]
-    lines.append("Les 3 facteurs ayant le plus influencé ce résultat :\n")
+    lines = [f"<strong>Analyse de votre profil</strong> — Risque estimé : <strong>{proba:.0%}</strong> ({risk_level})"]
+    lines.append("<br>Les 3 facteurs ayant le plus influencé ce résultat :")
 
     for rank, i in enumerate(top3, 1):
         fname = feature_names[i]
         label = FEATURE_LABELS[fname]
         val = input_df[fname].values[0]
-        direction = "↑ augmente" if sv[i] > 0 else "↓ diminue"
+        direction = "&#8593; augmente" if sv[i] > 0 else "&#8595; diminue"
         contribution = abs(sv[i])
-        lines.append(f"**{rank}. {label}** (valeur : {val:.1f}) — *{direction}* le risque (impact : {contribution:.3f})")
+        lines.append(f"<br><strong>{rank}. {label}</strong> (valeur : {val:.1f}) — <em>{direction}</em> le risque (impact : {contribution:.3f})")
 
     return "\n".join(lines)
 

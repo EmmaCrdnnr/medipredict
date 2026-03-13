@@ -11,7 +11,7 @@ FEATURE_LABELS = {
     "Glucose": "Taux de glucose",
     "BloodPressure": "Pression artérielle",
     "SkinThickness": "Épaisseur dde la peau",
-    "Insulin": "Taux d'insuline)",
+    "Insulin": "Taux d'insuline",
     "BMI": "Indice de masse corporelle",
     "DiabetesPedigreeFunction": "Antécédents familiaux",
     "Age": "Âge"

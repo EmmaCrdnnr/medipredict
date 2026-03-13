@@ -66,10 +66,10 @@ def plot_risk_gauge(proba: float, theme: str = "light") -> go.Figure:
                 "value": proba * 100
             }
         },
-        title={"text": f"<b>{label}</b>", "font": {"size": 28, "color": color}},
+        title={"text": f"Niveau de risque : <b>{label}</b>", "font": {"size": 16, "color": color}},
         domain={"x": [0, 1], "y": [0, 1]}
     ))
-    fig.update_layout(**_layout(theme), height=250)
+    fig.update_layout(**_layout(theme), height=280)
     return fig
 
 

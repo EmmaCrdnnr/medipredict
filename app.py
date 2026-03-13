@@ -186,11 +186,10 @@ if page == "Accueil":
     #Mention légale
     st.markdown("""
     <div class="legal-banner">
-    <strong>Mention légale obligatoire</strong><br>
+    <strong>Mention légale</strong><br>
     Cet outil est un <strong>outil de sensibilisation uniquement</strong>. Il ne constitue
-    en <strong>aucun cas un avis médical</strong>, un diagnostic ou une prescription. Les résultats fournis sont des estimations statistiques basées sur un dataset de recherche.
-    <strong>En cas de doute ou d'inquiétude concernant votre santé, consultez impérativement
-    un professionnel de santé qualifié.</strong>
+    en <strong>aucun cas un avis médical</strong>. Les résultats fournis sont des estimations basées sur un dataset de recherche.
+    <strong>En cas de doute concernant votre santé, consultez un professionnel de santé qualifié.</strong>
     </div>
     """, unsafe_allow_html=True)
 
@@ -211,7 +210,7 @@ if page == "Accueil":
         <h4>Vos données</h4>
         <p style="color:#f1f5f9; font-size:0.9rem;">
         Aucune donnée personnelle n'est stockée ni transmise. Tout le
-        traitement s'effectue en mémoire, localement sur le serveur.
+        traitement s'effectue localement.
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -221,7 +220,7 @@ if page == "Accueil":
         <h4>Notre modèle</h4>
         <p style="color:#f1f5f9; font-size:0.9rem;">
         Régression Logistique entraînée sur le dataset Pima Indians.
-        Choisi pour son interprétabilité et sa conformité éthique.
+        Modèle choisi pour son interprétabilité et sa conformité éthique.
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -232,7 +231,6 @@ if page == "Accueil":
     • Les données saisies dans ce formulaire sont utilisées <strong>uniquement</strong> pour calculer votre estimation de risque.<br>
     • Ces données ne sont <strong>ni enregistrées, ni transmises à des tiers, ni utilisées à des fins commerciales</strong>.<br>
     • Le traitement est intégralement réalisé en mémoire et effacé à la fermeture de la session.<br>
-    • Conformément au RGPD (Art. 5), vous bénéficiez d'un droit d'accès, de rectification et d'effacement de vos données.
     </div>
     """, unsafe_allow_html=True)
 
@@ -245,16 +243,16 @@ if page == "Accueil":
 
     consent = st.checkbox(
         "J'ai lu la mention légale et la politique de confidentialité. Je comprends que cet outil "
-        "est uniquement un outil de sensibilisation, non un outil médical. Je consens au traitement "
-        "temporaire de mes données de santé anonymes pour calculer mon estimation de risque."
+        "est uniquement un outil de sensibilisation et je consens au traitement "
+        "temporaire de mes données pour calculer mon estimation de risque."
     )
 
     if consent:
         st.session_state.consent_given = True
-        st.success("Consentement enregistré. Vous pouvez accéder à l'analyse via le menu.")
+        st.success("Consentement enregistré. Vous pouvez accéder à l'analyse.")
     else:
         st.session_state.consent_given = False
-        st.info("Veuillez cocher la case ci-dessus pour accéder aux fonctionnalités.")
+        st.info("Veuillez cocher la case ci-dessus pour accéder aux fonctionnalités")
 
 
 #Page 2
@@ -576,17 +574,5 @@ elif page == "Explorer les données":
         <strong>[Mesure corrective]</strong>
         Ces limites sont clairement communiquées à l'utilisateur. L'outil est présenté comme un outil de sensibilisation,
         non comme un diagnostic.
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("#### Conformité RGPD")
-        st.markdown("""
-        <div style="background:#1e293b; border-radius:8px; padding:1.2rem 1.5rem; color:#f1f5f9; font-size:0.88rem; line-height:2;">
-        [OK] Consentement explicite recueilli avant tout traitement<br>
-        [OK] Aucune donnée personnelle stockée (traitement en mémoire uniquement)<br>
-        [OK] Finalité clairement définie (sensibilisation uniquement)<br>
-        [OK] Mention légale visible sur la page d'accueil<br>
-        [OK] Base légale : consentement (Art. 6.1.a RGPD)<br>
-        [OK] Validation des entrées côté serveur (plages biologiquement plausibles)
         </div>
         """, unsafe_allow_html=True)

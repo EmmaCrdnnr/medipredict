@@ -450,8 +450,8 @@ elif page == "Comprendre ma prédiction":
         explainer, X_train_scaled = load_explainer(model, scaler, df)
         X_user_scaled = scaler.transform(input_df)
         shap_vals = compute_shap_values(explainer, X_user_scaled)
-
     # Explication naturelle
+    explanation = generate_natural_explanation(shap_vals[0], input_df, r["proba"])
     st.markdown(f"""
     <div class="metric-card">
     {explanation}

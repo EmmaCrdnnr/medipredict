@@ -47,8 +47,9 @@ def plot_risk_gauge(proba: float, theme: str = "light") -> go.Figure:
     color = GREEN if proba < 0.30 else (AMBER if proba < 0.60 else RED)
     label = "FAIBLE" if proba < 0.30 else ("MODÉRÉ" if proba < 0.60 else "ÉLEVÉ")
     fig = go.Figure(go.Indicator(
-        mode="gauge",
+        mode="gauge+number",
         value=round(proba * 100, 1),
+        number={"suffix": "%", "font": {"size": 40, "color": color}},
         gauge={
             "axis": {"range": [0, 100], "visible": False},
             "bar": {"color": color},

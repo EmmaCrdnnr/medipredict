@@ -98,6 +98,10 @@ div[data-testid="stSidebar"] { background-color: #0f172a; border-right: 1px soli
 }
 .stButton>button:hover { background: linear-gradient(135deg, #2563eb, #3b82f6); transform: translateY(-1px); }
 div[data-testid="stNumberInput"] input { background: #1e293b; color: #f1f5f9; border-color: #334155; }
+button[data-testid="stNumberInputStepDown"],
+button[data-testid="stNumberInputStepUp"] {
+    display: none;
+}
 </style>
 """, unsafe_allow_html=True)
 

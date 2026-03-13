@@ -50,7 +50,7 @@ def generate_natural_explanation(shap_vals: np.ndarray, input_df: pd.DataFrame, 
 
     risk_level = "faible" if proba < 0.30 else ("modéré" if proba < 0.60 else "élevé")
 
-    lines = [f"<strong>Analyse de votre profil</strong> — Niveau de risque : <strong>{risk_level}</strong>"]
+    lines = [f"<strong>Analyse de votre profil</strong> — Risque estimé : <strong>{proba:.0%}</strong> ({risk_level})"]
     lines.append("<br>Les 3 facteurs ayant le plus influencé ce résultat :")
 
     for rank, i in enumerate(top3, 1):

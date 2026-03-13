@@ -8,23 +8,23 @@ FEATURE_NAMES = [
 
 FEATURE_LABELS = {
     "Pregnancies": "Nombre de grossesses",
-    "Glucose": "Taux de glucose (mg/dL)",
-    "BloodPressure": "Pression artérielle (mm Hg)",
-    "SkinThickness": "Épaisseur du pli cutané (mm)",
-    "Insulin": "Insuline sérique (µU/mL)",
-    "BMI": "Indice de masse corporelle (kg/m²)",
-    "DiabetesPedigreeFunction": "Antécédents familiaux (score)",
-    "Age": "Âge (années)"
+    "Glucose": "Taux de glucose",
+    "BloodPressure": "Pression artérielle",
+    "SkinThickness": "Épaisseur dde la peau",
+    "Insulin": "Taux d'insuline)",
+    "BMI": "Indice de masse corporelle",
+    "DiabetesPedigreeFunction": "Antécédents familiaux",
+    "Age": "Âge"
 }
 
 FEATURE_RANGES = {
     "Pregnancies": (0, 17, 3, "Entrez 0 si non applicable"),
     "Glucose": (44, 199, 120, "Taux de glucose à jeun"),
     "BloodPressure": (24, 122, 72, "Pression diastolique"),
-    "SkinThickness": (7, 99, 29, "Épaisseur du pli du triceps"),
-    "Insulin": (14, 846, 80, "Insuline 2h après ingestion de glucose"),
+    "SkinThickness": (7, 99, 29, "Épaisseur de la peau"),
+    "Insulin": (14, 846, 80, "Taux d'insuline"),
     "BMI": (18.2, 67.1, 32.0, "Poids (kg) / Taille² (m)"),
-    "DiabetesPedigreeFunction": (0.078, 2.42, 0.47, "Score basé sur les antécédents familiaux (0 = faible, 2.42 = fort)"),
+    "DiabetesPedigreeFunction": (0.078, 2.42, 0.47, "Score basé sur les antécédents familiaux"),
     "Age": (21, 81, 33, "Votre âge en années")
 }
 
